@@ -1,0 +1,17 @@
+.game-card {
+    height: 100vh;
+    font-family: 'Open Sans', monospace;
+}
+
+.m-0 {
+    font-family: 'Times New Roman', Times, serif;
+    color: pink;
+}
+.card-title m-0 {
+    size: 10px ;
+}
+
+.btnLess {
+    color: orangered;
+    
+}
