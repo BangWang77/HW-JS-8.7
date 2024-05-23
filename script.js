@@ -5,7 +5,7 @@ let answerNumber  = Math.floor((minValue + maxValue) / 2);
 let orderNumber = 1;
 let gameRun = true;
 
-let answerPhrase = ('asfewf0', 'frfef0', 'wwerwe');
+//let answerPhrase = ('asfewf0', 'frfef0', 'wwerwe');
 
 const orderNumberField = document.getElementById('orderNumberField');
 const answerField = document.getElementById('answerField');
@@ -61,12 +61,11 @@ document.getElementById('btnOver').addEventListener('click', function () {
 
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun){
-        if(answerField.innerText = true){
-            console.log('4444');
-            let answerWin = ['wadasd', 'asdwad', 'saasd'];
-            //answerWin = answerPhrase;
-            answerWin = Math.round(Math.random() * 3); 
-            answerField.innerText = answerWin;
+        if(answerField.innerText = answerNumber){
+            //console.log('4444');
+            const answerWin = ["Это было легко!", "Слишком просто для компьютера", "Я знаю всё!"];
+            const randomNum = Math.round(Math.random() * 2);
+            answerField.innerText = answerWin[randomNum];
                         
         }
     }
