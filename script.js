@@ -1,27 +1,37 @@
-let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-let answerNumber  = Math.floor((minValue + maxValue) / 2);
-let orderNumber = 1;
-let gameRun = true;
+let minValue //= document.getElementById('minValue').value //= parseInt(prompt('Минимальное знание числа для игры','0'));
+let maxValue //= document.getElementById('maxValue').value //= parseInt(prompt('Максимальное знание числа для игры','100'));
 
-//let answerPhrase = ('asfewf0', 'frfef0', 'wwerwe');
+let answerNumber  //= Math.floor((minValue + maxValue) / 2);
+let orderNumber = 1;
+let gameRun //= true;
 
 const orderNumberField = document.getElementById('orderNumberField');
 const answerField = document.getElementById('answerField');
 
-orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${answerNumber }?`;
+//orderNumberField.innerText = orderNumber;
+//answerField.innerText = `Вы загадали число ${answerNumber }?`;
+resetGame();
 
 document.getElementById('btnRetry').addEventListener('click', () => {
 resetGame()
 });
 
+document.getElementById('btnSubmit').addEventListener('click', gameRun())
+
 function resetGame() {
     // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
     // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
+    //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    if(isNaN(minValue)){
+        minValue = 0
+    };
+    if(isNaN(maxValue)){
+        maxValue = 100
+    }
+
+    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+
     console.log('minValue', minValue)
     console.log('maxValue', maxValue)
 
@@ -29,6 +39,7 @@ function resetGame() {
     answerNumber = Math.floor((minValue + maxValue) / 2);
     gameRun = true;
     let answerPhrase = answerNumber
+    
 
     document.getElementById('orderNumberField').innerText = orderNumber;
     answerField.innerText = `Вы загадали число ${answerNumber }?`;
@@ -86,6 +97,8 @@ document.getElementById('btnLess').addEventListener('click', function () {
         } else {
             maxValue = answerNumber  - 1;
             answerNumber  = Math.ceil((minValue + maxValue) / 2);
+            let result = numberInText(answerNumber);
+            console.log('result' , result);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             answerField.innerText = `Вы загадали число ${answerNumber }?`;
@@ -94,3 +107,39 @@ document.getElementById('btnLess').addEventListener('click', function () {
         }
     }
 })
+
+function numberInText(answerNumber) {4
+    //console.log('numberInText' , typeof(answerNumber))
+    // Проверяем, является ли переданный аргумент числом
+    //if(typeof answerNumber === 'number' && Number.isInteger(answerNumber) >= -999 && answerNumber <= 999) {
+        // Создаем массивы с числами 0-19, с десятками и сотнями
+        console.log(answerNumber , 'answerNumber');
+        //if (answerNumber) {
+            console.log(answerNumber , 'answerNumberAfterIf');
+            const simpleNums = ['ноль', 'один', 'два','три','четыре','пять', 'шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать', 'четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать'];
+
+            if (answerNumber === 0) {
+                return ' ноль'
+            } // обработка нуля
+
+            let result = ''
+
+            if (answerNumber < 0) {
+                result += 'минус '
+                answerNumber = Math.abs(answerNumber) 
+            } // обработка отрицательных чисел (мы добавим слово минус, а само число станет положительным по модулю)
+
+            //if (answerNumber > 0) {
+                if (answerNumber < 20) {
+                    result += simpleNums[answerNumber] + ' ';
+                } else {
+                    result += simpleNums[Math.floor(answerNumber % 10)] + ' ';
+                }
+            //} // обработка 1-19
+
+            return result.trim(); // убираем лишние пробелы в конце строки
+        //} else {
+            //return answerNumber
+        //}
+    //}
+} 
