@@ -10,31 +10,19 @@ const answerField = document.getElementById('answerField');
 
 //orderNumberField.innerText = orderNumber;
 //answerField.innerText = `Вы загадали число ${answerNumber }?`;
-resetGame();
+//resetGame();
 
-document.getElementById('btnRetry').addEventListener('click', () => {
-resetGame()
-});
+//document.getElementById('btnRetry').addEventListener('click', () => {
+//resetGame()
+//});
 
-document.getElementById('btnSubmit').addEventListener('click', gameRun())
+document.getElementById('btnSubmit').addEventListener('click', function () {
 
-function resetGame() {
-    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-    //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-    if(isNaN(minValue)){
-        minValue = 0
-    };
-    if(isNaN(maxValue)){
-        maxValue = 100
-    }
-
-    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-
-    console.log('minValue', minValue)
-    console.log('maxValue', maxValue)
-
+    let minValue = parseInt(document.getElementById('minValue').value);
+    let maxValue = parseInt(document.getElementById('maxValue').value);
+    console.log('minValue550', minValue);
+    console.log('maxValue550', maxValue);
+    
     orderNumber = 1;
     answerNumber = Math.floor((minValue + maxValue) / 2);
     gameRun = true;
@@ -45,7 +33,40 @@ function resetGame() {
     answerField.innerText = `Вы загадали число ${answerNumber }?`;
 
     document.getElementById('answerField').innerText = answerPhrase
-}
+
+
+})
+
+//document.getElementById('btnSubmit').addEventListener('click', gameRun())
+
+//function resetGame() {
+    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
+    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
+    //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
+    //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+   // if(isNaN(minValue)){
+   //     minValue = 0
+   // };
+   // if(isNaN(maxValue)){
+  //      maxValue = 100
+   // }
+
+    //alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+
+   // console.log('minValue', minValue)
+   // console.log('maxValue', maxValue)
+
+   // orderNumber = 1;
+   // answerNumber = Math.floor((minValue + maxValue) / 2);
+   // gameRun = true;
+   // let answerPhrase = answerNumber
+    
+
+    //document.getElementById('orderNumberField').innerText = orderNumber;
+    //answerField.innerText = `Вы загадали число ${answerNumber }?`;
+
+    //document.getElementById('answerField').innerText = answerPhrase
+//}
 
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
