@@ -1,5 +1,5 @@
-let minValue //= document.getElementById('minValue').value //= parseInt(prompt('Минимальное знание числа для игры','0'));
-let maxValue //= document.getElementById('maxValue').value //= parseInt(prompt('Максимальное знание числа для игры','100'));
+let minValue = parseInt(document.getElementById('minValue').value);//= document.getElementById('minValue').value //= parseInt(prompt('Минимальное знание числа для игры','0'));
+let maxValue = parseInt(document.getElementById('maxValue').value);//= document.getElementById('maxValue').value //= parseInt(prompt('Максимальное знание числа для игры','100'));
 
 let answerNumber  //= Math.floor((minValue + maxValue) / 2);
 let orderNumber = 1;
@@ -17,49 +17,47 @@ const answerField = document.getElementById('answerField');
 //});
 
 document.getElementById('btnSubmit').addEventListener('click', function () {
+    event.preventDefault();
+    
 
-    let minValue = parseInt(document.getElementById('minValue').value);
-    let maxValue = parseInt(document.getElementById('maxValue').value);
+    minValue = parseInt(document.getElementById('minValue').value);
+    maxValue = parseInt(document.getElementById('maxValue').value);
     console.log('minValue550', minValue);
     console.log('maxValue550', maxValue);
-    
     orderNumber = 1;
     answerNumber = Math.floor((minValue + maxValue) / 2);
     gameRun = true;
     let answerPhrase = answerNumber
-    
 
     document.getElementById('orderNumberField').innerText = orderNumber;
     answerField.innerText = `Вы загадали число ${answerNumber }?`;
 
     document.getElementById('answerField').innerText = answerPhrase
-
-
 })
 
 //document.getElementById('btnSubmit').addEventListener('click', gameRun())
 
 //function resetGame() {
-    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-    // minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
+     //minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
+     //maxValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
     //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
     //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-   // if(isNaN(minValue)){
-   //     minValue = 0
-   // };
-   // if(isNaN(maxValue)){
-  //      maxValue = 100
-   // }
+    //if(isNaN(minValue)){
+        //minValue = 0
+    //};
+    //if(isNaN(maxValue)){
+        //maxValue = 100
+    //}
 
     //alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 
-   // console.log('minValue', minValue)
-   // console.log('maxValue', maxValue)
+    //console.log('minValue', minValue)
+    //console.log('maxValue', maxValue)
 
-   // orderNumber = 1;
-   // answerNumber = Math.floor((minValue + maxValue) / 2);
-   // gameRun = true;
-   // let answerPhrase = answerNumber
+    //orderNumber = 1;
+    //answerNumber = Math.floor((minValue + maxValue) / 2);
+    //gameRun = true;
+    //let answerPhrase = answerNumber
     
 
     //document.getElementById('orderNumberField').innerText = orderNumber;
@@ -71,7 +69,7 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
         if (minValue === maxValue){
-            console.log('minValue === maxValue')
+            console.log('minValue === maxValue', minValue === maxValue)
             const phraseRandom = Math.round( Math.random());
             const answerPhrase = (phraseRandom === 1) ?
                 `Вы загадали неправильное число!\n\u{1F914}` :
