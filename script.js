@@ -12,9 +12,9 @@ const answerField = document.getElementById('answerField');
 //answerField.innerText = `Вы загадали число ${answerNumber }?`;
 //resetGame();
 
-//document.getElementById('btnRetry').addEventListener('click', () => {
-//resetGame()
-//});
+document.getElementById('btnRetry').addEventListener('click', () => {
+resetGame()
+})
 
 document.getElementById('btnSubmit').addEventListener('click', function () {
     event.preventDefault();
@@ -22,6 +22,16 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
     minValue = parseInt(document.getElementById('minValue').value);
     maxValue = parseInt(document.getElementById('maxValue').value);
+    if(minValue <= 0){
+        gameRun = false
+        alert('Максимальное значение -100');
+        resetGame();
+    };
+    if(maxValue >= 100){
+        gameRun = false;
+        alert('Максимальное значение 100');
+        resetGame()
+    }
     console.log('minValue550', minValue);
     console.log('maxValue550', maxValue);
     orderNumber = 1;
@@ -37,34 +47,34 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
 //document.getElementById('btnSubmit').addEventListener('click', gameRun())
 
-//function resetGame() {
-     //minValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-     //maxValue = Math.floor(Math.random() * Math.floor(maxValue - minValue) + minValue)
-    //minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    //maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-    //if(isNaN(minValue)){
-        //minValue = 0
-    //};
-    //if(isNaN(maxValue)){
-        //maxValue = 100
-    //}
+function resetGame() {
+    if(isNaN(minValue)){
+        minValue = 0
+    };
+    if(isNaN(maxValue)){
+        maxValue = 100
+    }
+    minValue = 0;
+    maxValue = 0;
 
-    //alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+    alert(`Введите число от 0 до 100`);
+    minValue = parseInt(document.getElementById('minValue').value);
+    maxValue = parseInt(document.getElementById('maxValue').value);
 
-    //console.log('minValue', minValue)
-    //console.log('maxValue', maxValue)
+    console.log('minValue', minValue)
+    console.log('maxValue', maxValue)
 
-    //orderNumber = 1;
-    //answerNumber = Math.floor((minValue + maxValue) / 2);
-    //gameRun = true;
-    //let answerPhrase = answerNumber
+    orderNumber = 1;
+    answerNumber = Math.floor((minValue + maxValue) / 2);
+    gameRun = true;
+    let answerPhrase = answerNumber
     
 
-    //document.getElementById('orderNumberField').innerText = orderNumber;
-    //answerField.innerText = `Вы загадали число ${answerNumber }?`;
+    document.getElementById('orderNumberField').innerText = orderNumber;
+    answerField.innerText = `Вы загадали число ${answerNumber }?`;
 
-    //document.getElementById('answerField').innerText = answerPhrase
-//}
+    document.getElementById('answerField').innerText = answerPhrase
+}
 
 document.getElementById('btnOver').addEventListener('click', function () {
     if (gameRun){
