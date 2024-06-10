@@ -22,15 +22,11 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
     minValue = parseInt(document.getElementById('minValue').value);
     maxValue = parseInt(document.getElementById('maxValue').value);
-    if(minValue <= 0){
-        gameRun = false
-        alert('Максимальное значение -100');
-        resetGame();
+    if(minValue <= -1000){
+        minValue = -999
     };
-    if(maxValue >= 100){
-        gameRun = false;
-        alert('Максимальное значение 100');
-        resetGame()
+    if(maxValue >= 1000){
+        maxValue = 999
     }
     console.log('minValue550', minValue);
     console.log('maxValue550', maxValue);
@@ -49,10 +45,10 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
 function resetGame() {
     if(isNaN(minValue)){
-        minValue = 0
+        minValue = -999
     };
     if(isNaN(maxValue)){
-        maxValue = 100
+        maxValue = 999
     }
     minValue = 0;
     maxValue = 0;
